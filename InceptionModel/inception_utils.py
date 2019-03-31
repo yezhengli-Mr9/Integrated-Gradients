@@ -1,7 +1,6 @@
 import numpy as np
 import tensorflow as tf
 
-
 def load_model(model_path):
   '''Loads the Inception (v1) model and creates a TensorFlow session for it.'''
   graph = tf.Graph()
@@ -10,6 +9,31 @@ def load_model(model_path):
   graph_def = tf.GraphDef.FromString(open(model_path).read())
   tf.import_graph_def(graph_def)
   return sess, graph
+
+# def load_model(model_path):
+#   '''Loads the Inception (v1) model and creates a TensorFlow session for it.'''
+#   graph = tf.Graph()
+#   cfg = tf.ConfigProto(gpu_options={'allow_growth':True})
+#   sess = tf.InteractiveSession(graph=graph, config=cfg)
+#   print("[load_model] model_path", model_path)
+#   # ./InceptionModel/tensorflow_inception_graph.pb
+# #   with open(model_path, errors='ignore') as f:
+#   with open(model_path, errors='strict') as f:
+#     #   graph_def = tf.GraphDef.FromString(open(model_path).read())
+#     #   graph_def = tf.GraphDef.FromString(open(model_path, encoding="utf8", errors='ignore').read())
+#     #   graph_def = tf.GraphDef.FromString(open(model_path, encoding='utf-16').read())   
+
+#     #     line = f.readline()
+#     #     while line:
+#     #         print("[load_model] line", line)
+#     #         line = f.readline()
+
+#     f_read = f.read()
+#     f_read.encode()
+# #     f_read =
+#     graph_def = tf.GraphDef.FromString(f_read)
+#     tf.import_graph_def(graph_def)
+#   return sess, graph
 
 
 def load_labels_vocabulary(labels_path):
